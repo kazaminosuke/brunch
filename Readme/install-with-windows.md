@@ -248,43 +248,43 @@ It is normal for the first boot to take a very long time, please be patient.
     * また、`14`、`20`、`100` などの整数で置き換えることになります。
 
 例えばBrunchをインストールするディレクトリを作る：
-  - run `mkdir /mnt/c/Users/username/brunch` if you want to install brunch in your home folder on C: partition.
-  - or `mkdir /mnt/d/brunch` if you want to install brunch in the D: partition.
+  - brunch を C: パーティションのホームフォルダにインストールしたい場合は、`mkdir /mnt/c/Users/username/brunch` を実行してください。
+  - D: パーティションにインストールする場合は `mkdir /mnt/d/brunch` を実行してください。
 
-  Then launch the installer providing "-dst" argument with the name of the image file to be created (in your brunch directory):
+  次に、"-dst "のあとに作成するイメージファイル名（ブランチディレクトリ）を指定してインストーラーを起動します。:
 ```sudo bash chromeos-install.sh -src chromeos_filename.bin -dst /mnt/c/Users/username/brunch/chromeos.img -s size```
 
-The installation may take some time depending on the speed of your target disk, please be patient. There may be a couple of GPT Header errors, which can be safely ignored. If you are told that there is not enough space to install, reduce the number at the end of your command until it fits. It is normal that the img cannot take the entire space of the partition, as some of that space is reserved by the system.
+ターゲットディスクの速度によってはインストールに時間がかかる場合があります。 GPTヘッダーのエラーがいくつか出るかもしれませんが、これは無視してかまいません。 インストールに十分な空き容量がないと言われた場合は、コマンドの末尾の数字を収まるまで減らしてください。 imgがパーティションの全領域を占有できないのは普通のことです。
 
-When the installer asks you for the type of install, type "dualboot" in the terminal and press "Enter" to continue.
+インストーラーがインストールの種類を聞いてきたら、ターミナルに「dualboot」と入力し、「Enter」キーを押して続行する。
 
-The installation will report that ChromeOS was installed when it is finished. Before continuing, make sure that there are no additional errors in the terminal. If there are no errors, then you are good to continue!
+インストールが完了すると、ChromeOSがインストールされたことが報告されます。 続行する前に、ターミナルに追加のエラーがないことを確認してください。 エラーがなければ、続行しても問題ありません！
   
-### Set up Grub2Win
-10. Install [Grub2win][grub2win] if you have not already, then launch the program. (Windows Defender sometimes will flag Grub2Win as a virus and remove it)
-  
-11. Click on the `Manage Boot Menu` button, then click `Chrome` under 'Import Configuration File'.
-  
-  * Select your chromeos.img.grub.txt file that we created earlier.
-  * Click `Import Selected Items`
-    * Your entry will not be saved unless you click `Apply`.
+### Grub2Winのセットアップ
+10. Grub2win][grub2win]をインストールし、プログラムを起動する。 (Windows DefenderがGrub2Winをウイルスと判断して削除することがあります。）
 
-### Prevent Windows from locking the NTFS partition
-12. Disable encryption / hibernation
+11. Manage Boot Menu`ボタンをクリックし、'Import Configuration File'で`Chrome`をクリックします。
 
-ChromeOS will not be bootable and / or stable if you do not perform the below actions (Refer to Windows online resources if needed):
-  - Ensure that bitlocker is disabled on the drive which contains the ChromeOS image or disable it.
-  - Disable fast startup.
-  - Disable hibernation.
+  * 先ほど作成したchromeos.img.grub.txtファイルを選択します。
+  * 選択した項目のインポート`をクリックします。
+    * Apply`をクリックしない限り、入力内容は保存されません。
+
+### WindowsがNTFSパーティションをロックしないようにする
+12. 暗号化/休止状態を無効にする。
+
+以下の操作を行わないと、ChromeOS は起動できず、安定しません (必要に応じて Windows オンライン リソースを参照してください)：
+  - ChromeOS イメージが保存されているドライブで bitlocker が無効になっていることを確認するか、無効にします。
+  - 高速スタートアップを無効にする。
+  - ハイバネーションを無効にする。
   
-At this point, you are ready to reboot and you'll be greeted by the Grub2win menu instead of booting into Windows. 
+この時点で、再起動する準備ができ、Windowsに起動する代わりにGrub2winメニューが出迎える。
 
-### Next Steps
-  
-It is normal for the first boot to take a very long time, please be patient.
+### 次のステップ
 
-* The first boot is the best time to setup anything important such as [changing kernels][changing-kernels] or [framework options][framework-options] by selecting the "ChromeOS (Settings)" boot option.
-* If you have any issues, it is strongly advised to check out the [Brunch Configuration Menu][edit-brunch-config] for possible patches or solutions.
+最初のブートには非常に時間がかかるのが普通です。
+
+* 最初の起動は、[カーネルの変更][change-kernels]や[フレームワークオプション][framework-options]などの重要な設定をするのに最適なタイミングです。
+* もし何か問題があれば、[ブランチ設定メニュー][edit-brunch-config] でパッチや解決策を確認することを強くお勧めします。
 
   </details>
  
@@ -292,24 +292,27 @@ It is normal for the first boot to take a very long time, please be patient.
  
 # [Troubleshooting and Support][troubleshooting-and-faqs]
 
-See the full [Troubleshooting and Support][troubleshooting-and-faqs] page if you're having issues.
+問題がある場合は、[Troubleshooting and Support][troubleshooting-and-faqs] ページを参照してください。
 
-### Additional Tips
-* If you're having trouble booting a Brunch USB, make sure that UEFI is enabled in the BIOS.
-* Some PCs require a key to be held when booting to boot from USB or that USB booting is enabled in the BIOS
-* The first boot can take up to an hour on some hardware. Brunch does not typically freeze on the Brunch logo. If you are seeing the Brunch logo, the system is _probably_ still booting.
-* If your PC is stuck on the ChromeOS logo (White background), it is likely that you've got an incompatible dedicated GPU.
-* If you get a blue screen saying "Verification failed" you can either disable secure boot in your bios settings, or [enroll the secure boot key][secure-boot].
-  * To enroll the key directly from a USB, select OK -> Enroll key from disk -> EFI-SYSTEM -> brunch.der -> Continue and reboot.
-* If the system reboots _itself_ when booting normally, then Brunch has run into an error and you may need to do some advanced troubleshooting.
+### その他のヒント
+* ブランチUSBの起動に問題がある場合は、BIOSでUEFIが有効になっていることを確認してください。
+* PCによっては、USBからブートする際にキーを押すか、BIOSでUSBブートが有効になっている必要があります。
+* ハードウェアによっては、最初の起動に1時間かかることがあります。 ブランチは通常、ブランチのロゴでフリーズすることはありません。 Brunchのロゴが表示されている場合、システムはまだ起動している可能性があります。
+* PCがChromeOSのロゴ（背景は白）で止まっている場合、互換性のない専用GPUを使用している可能性があります。
+* 検証失敗」というブルースクリーンが表示される場合は、BIOS設定でセキュアブートを無効にするか、[セキュアブートキーを登録][secure-boot]してください。
+  * USBから直接キーを登録するには、[OK] -> [Enroll key from disk] -> [EFI-SYSTEM] -> [brunch.der] -> [Continue and reboot]を選択します。
+* 正常なブート時にシステムが勝手に再起動する場合は、Brunchがエラーを起こしているため、高度なトラブルシューティングが必要です。
 
-In case you run into issues while installing or using Brunch, you can find support on Discord:
+*** www.DeepL.com/Translator（無料版）で翻訳 ***
+
+
+Brunchのインストールや使用中に問題が発生した場合は、Discordでサポートを受けることができます：
 
 [![Discord][discord-shield]][discord-url]
 
 <!-- Alternate Guide -->
-## Looking for the Linux guide?
-### [![Install with Linux][linux-img]][linux-guide]  [Install with Linux][Linux-guide]
+## Linuxガイドをお探しですか？
+### [![Linuxでインストール]][linux-img]][linux-guide] [Linuxでインストール][Linux-guide]]
 
 <!-- Reference Links -->
 <!-- Badges -->
