@@ -122,46 +122,46 @@ USBまたは2台目の内蔵ディスクにインストールした場合は、B
   <summary>クリックしてシングルブートガイドを開く</summary>
 
 ### 必要条件
-- Administrator access.
-- Target Disk must be 16 GB minimum.
-- Working Brunch USB.
-- A [compatible PC][compatibility] to boot Brunch on.
-- An entry level understanding of the linux terminal.
-  - This guide aims to make this process as easy as possible, but knowing the basics is expected.
+- 管理者アクセス
+- ターゲットディスクは最低16GB必要です。
+- 動作するBrunch USB
+- Brunchを起動するための[互換PC][互換性]。
+- 入門レベルのLinuxターミナルの理解
+  - 本ガイドはこのプロセスをできるだけ簡単にすることを目的としていますが、基本的な知識は必要です。
 
-### Selecting a Target Disk
+### ターゲットディスクの選択
   
-1. Log into ChromeOS, and switch to the TTY2 terminal with **Ctrl + Alt + F2**, then login as `chronos`.
-  
-2. Before continuing, you will need to know what disk you want to install to. Be absolutely sure **before** you continue, this installation will erase **everything** on that disk, including other partitions. The disk must be at least 16 GB, or the installation will fail. There are several ways to determine which disk is your target, in my example I'll be using `lsblk`.
+1. ChromeOSにログインし、**Ctrl + Alt + F2**でTTY2ターミナルに切り替え、`chronos`としてログインする。
+
+2. 続行する前に、インストール先のディスクを確認してください。 続行する前に**絶対に確認してください**。このインストールは、他のパーティションを含め、ディスク上の**すべてを消去します**。 ディスクは 16 GB 以上でなければインストールに失敗します。 どのディスクがターゲットかを決定する方法はいくつかありますが、この例では `lsblk` を使用します。
   
 ```lsblk -e7```
   
-This command will show your disks, and the partitions on them. It will also show their sizes and if they are currently mounted. Use this information to determine which disk is your target.
+このコマンドはディスクとその上のパーティションを表示します。 サイズと現在マウントされているかどうかも表示されます。 この情報を使って、どのディスクがターゲットかを決定する。
   
 ***
   
-#### Tips:
+#### ヒント:
   
-* Your target will **never** be zram or a loop device.
-* Some PCs may require RAID to be disabled before showing your disks correctly.
-* For this installation, a USB is treated the same as any HDD or SSD.
-* If there is an EFI mountpoint on a disk that disk is your boot disk.
-  * You **cannot** install Brunch directly onto the same disk you are currently booting from.
-* When doing a singleboot installation, your target will **not** be a partition. This method installs to the *entire* disk.
+* ターゲットは zram やループデバイスではありません。
+* PCによっては、ディスクを正しく表示する前にRAIDを無効にする必要があります。
+* このインストールでは、USBはHDDやSSDと同じように扱われます。
+* ディスクに EFI マウントポイントがある場合、そのディスクが起動ディスクとなります。
+  * 現在起動しているディスクに直接インストールすることはできません。
+* シングルブートでインストールする場合、ターゲットはパーティションではありません。この方法はディスク全体にインストールします。
   
   ***
   
-### Install Brunch
+### 
   
-3. Once you've determined your target disk, you're ready to install Brunch.
-  * You will replace `disk` with your target disk. (Such as `sdb`, `mmcblk0` or `nvme0n1` for example)
+3. ターゲットディスクが決まったら、Brunchのインストールは完了です。
+  * disk`をターゲットディスクに置き換えてください。 (例えば `sdb`、`mmcblk0`、`nvme0n1` など）。
   
 ```sudo chromeos-install -dst /dev/disk```
   
-The script will ask for confirmation. If you're ready to install, type `yes` into the prompt.
+スクリプトが確認を求める。 インストールする準備ができたら、プロンプトに `yes` と入力してください。
   
-The installation may take some time depending on the speed of your target disk, please be patient. There may be a couple of GPT Header errors, which can be safely ignored. 
+ターゲットディスクの速度によってはインストールに時間がかかる場合があります。 GPTヘッダーのエラーがいくつか出るかもしれませんが、無視してください。
   
 The installation will report that ChromeOS was installed when it is finished. Before closing the terminal, make sure that there are no additional errors in the terminal. If there are no errors, then you are good to go!
 
