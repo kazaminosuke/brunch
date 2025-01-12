@@ -155,7 +155,7 @@ USBまたは2台目の内蔵ディスクにインストールした場合は、B
 ### 
   
 3. ターゲットディスクが決まったら、Brunchのインストールは完了です。
-  * disk`をターゲットディスクに置き換えてください。 (例えば `sdb`、`mmcblk0`、`nvme0n1` など）。
+  * `disk`をターゲットディスクに置き換えてください。 (例えば `sdb`、`mmcblk0`、`nvme0n1` など）。
   
 ```sudo chromeos-install -dst /dev/disk```
   
@@ -182,22 +182,21 @@ It is normal for the first boot to take a very long time, please be patient.
 <details>
   <summary>クリックしてデュアルブートガイドを開く</summary>
 
-### Requirements
-- Administrator access.
-- Target partition must be 16gb minimum, unencrypted (bitlocker disabled), and formatted as NTFS.
-- A linux installation vis WSL2
-- `pv`, `tar`, `unzip` and `cgpt` packages.
-- A [compatible PC][compatibility] to boot Brunch on.
-- An entry level understanding of the linux terminal.
-  - This guide aims to make this process as easy as possible, but knowing the basics is expected.
-
-### Recoveries
-1. Download a recovery suitable for your CPU. The list below can help you select one. You do *not* need to select a recovery that matches the latest Brunch release number, the most recent avaliable is typically fine.
+### 必要条件
+- 管理者権限。
+- ターゲットパーティションは16GB以上で、暗号化されておらず（ビットロッカーは無効）、NTFSでフォーマットされていること。
+- WSL2がインストールされていること。
+- `pv`、`tar`、`unzip`、`cgpt` パッケージ。
+- Brunchを起動するための[互換PC][compatibility]。
+- Linux ターミナルの入門レベルの理解。
+  - このガイドはこのプロセスをできるだけ簡単にすることを目的としているが、基本的なことは知っていることが望ましい。
+### リカバリー
+1. お使いのCPUに適したリカバリーをダウンロードします。 以下のリストを参考にしてください。 最新のBrunchリリース番号と一致するリカバリーを選択する必要はありません。
   
 #### Intel
-* 8th gen & 9th gen: "[shyvana][recovery-shyvana]" for Intel / "[bobba][recovery-bobba]" for Celeron.
-* 10th gen: "[jinlon][recovery-jinlon]".
-* 11th gen & above: "[voxel][recovery-voxel]".
+* 第8世代と第9世代： Intel 用 "[shyvana][recovery-shyvana]」／Celeron 用 "[bobba][recovery-bobba]".
+* 第 10 世代： 第 10 世代: "[jinlon][recovery-jinlon]」.
+* 第11世代以上： "[voxel][recovery-voxel]".
 #### AMD
 * Ryzen: "[gumboz][recovery-gumboz]".
 
