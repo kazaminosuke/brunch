@@ -163,24 +163,24 @@ USBまたは2台目の内蔵ディスクにインストールした場合は、B
   
 ターゲットディスクの速度によってはインストールに時間がかかる場合があります。 GPTヘッダーのエラーがいくつか出るかもしれませんが、無視してください。
   
-The installation will report that ChromeOS was installed when it is finished. Before closing the terminal, make sure that there are no additional errors in the terminal. If there are no errors, then you are good to go!
+インストールが完了すると、ChromeOSがインストールされたことが報告されます。 ターミナルを閉じる前に、ターミナルに追加のエラーがないことを確認してください。 エラーがなければ、問題ありません！
 
-### Next Steps
+### 次のステップ
   
 It is normal for the first boot to take a very long time, please be patient.
 
-* The first boot is the best time to setup anything important such as [changing kernels][changing-kernels] or [framework options][framework-options] by selecting the "ChromeOS (Settings)" boot option.
-* If you have any issues, it is strongly advised to check out the [Brunch Configuration Menu][edit-brunch-config] for possible patches or solutions.
+* 最初の起動は、[changing kernels][change-kernels]や[framework options][framework-options]などの重要な設定をするのに最適なタイミングです。
+* もし何か問題があれば、[Brunch Configuration Menu][edit-brunch-config] でパッチや解決策を確認することを強くお勧めします。
   
 </details>  
   
   ***
  
-# Dualboot installations
-This guide is for installing Brunch to a partition using Windows WSL2.
+# デュアルブートのインストール
+このガイドはWindows WSL2を使ってBrunchをパーティションにインストールするためのものです。
 
 <details>
-  <summary>Click to open dualboot guide</summary>
+  <summary>クリックしてデュアルブートガイドを開く</summary>
 
 ### Requirements
 - Administrator access.
