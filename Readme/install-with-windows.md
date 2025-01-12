@@ -205,40 +205,40 @@ It is normal for the first boot to take a very long time, please be patient.
 ご希望のリカバリーを選択した後、特定のリリースを選択することができます。 投稿されたリリースは現在のリリースより遅れているかもしれませんが、これは通常のことで、後で現在のリリースにアップデートすることができます。 通常、利用可能な最新のリリースを使用することをお勧めします。
 
 ### ファイルの収集
-2. Download the Brunch files from this GitHub repository. Do not use files found on other sites or linked in videos online. The [releases tab][releases-tab] can be found at the bottom of the right-hand column on the main GitHub page, but it is generally suggested to use the [latest release][latest-release].
+2. このGitHubリポジトリからBrunchのファイルをダウンロードしてください。他のサイトにあるファイルやオンライン上の動画にリンクされているファイルは使用しないでください。[releases tab][releases-tab]はGitHubのメインページの右側の列の一番下にありますが、一般的には[latest release][latest-release]を使うことが推奨されています。
 
-When downloading a release, select the brunch...tar.gz file from the assets at the bottom of the release post. You do not need the source code files, do not download them.
+リリースをダウンロードする際は、リリース記事の下にあるアセットからbrunch...tar.gzファイルを選択してください。 ソースコードファイルは必要ありませんので、ダウンロードしないでください。
 
-Before continuing, you will need a linux distro installed from the Microsoft Store using WSL2, and the distro must be set up and ready to use. Please refer to online resources for this as the setup can be complicated for some systems.
+続行する前に、WSL2を使ってマイクロソフトストアからLinuxディストロをインストールし、ディストロをセットアップして使用できる状態にしておく必要があります。 システムによってはセットアップが複雑な場合があるので、オンラインリソースを参照してください。
 
-### Prepare the Terminal
-3. Once both files have been downloaded, the Brunch release and your chosen ChromeOS recovery, Launch WSL2.
-4. Make sure that pv, cgpt, tar and unzip are installed.
+### ターミナルの準備
+3. Brunchリリースと選択したChromeOSリカバリーの両方のファイルをダウンロードしたら、WSL2を起動します。
+4. pv、cgpt、tar、unzipがインストールされていることを確認する。
 
 ```sudo apt update && sudo apt -y install pv cgpt tar unzip```
-  * My example uses `apt`, a package manager for Debian and Ubuntu based distros. If you use Arch, you will need [vboot-utils][vboot-utils] for access to cgpt and a different package manager may be needed to install the rest.
+  * 私の例では、Debian と Ubuntu ベースのディストロのパッケージマネージャである `apt` を使っています。Arch を使っている場合は、cgpt にアクセスするために [vboot-utils][vboot-utils] が必要で、それ以外をインストールするには別のパッケージマネージャーが必要になるかもしれません。
 
-4b. Some Linux releases may require the `universe` repo to install some of the above dependencies. If you get any errors about a dependency being unavaliable, add the `universe` repo with this command, and then try the previous step again afterwards.
+4b. Linux のリリースによっては、上記の依存関係をインストールするために `universe` リポジトリが必要になる場合があります。 もし、依存関係が利用できないというエラーが表示された場合は、このコマンドで `universe` レポジトリを追加し、その後でもう一度前のステップを試してください。
 
 ```sudo add-apt-repository universe```
   
-5. After all dependencies have been installed, `cd` into the directory where your files were downloaded.
-  * Replace `username` with your *Windows* username.
-  * The linux terminal is Case Sensitive, be mindful of capital letters.
+5. すべての依存関係がインストールされたら、ファイルをダウンロードしたディレクトリに `cd` します。
+  * `username`をあなたの*Windows*ユーザー名に置き換えてください。
+  * linuxのターミナルは大文字小文字を区別します。
 
 ```cd /mnt/c/Users/username/Downloads```
   
-6. Extract the Brunch archive using `tar`
-  * Replace `brunch_filename.tar.gz` with the file's actual filename.
+6. `tar` を使ってBrunchアーカイブを取り出す。
+  * `brunch_filename.tar.gz` を実際のファイル名に置き換える。
 
 ```tar zxvf brunch_filename.tar.gz```
   
-7. Extract the ChromeOS recovery using `unzip`
-  * Replace `chromeos_filename.bin.zip` with the file's actual filename.
+7. `unzip`を使用してChromeOSリカバリを解凍する。
+  * `chromeos_filename.bin.zip`を実際のファイル名に置き換えてください。
 
 ```unzip chromeos_filename.bin.zip```
 
-Once completed, you will have 4 new files from the brunch archive, and a recovery bin that we will use in the next step.
+完了すると、ブランチアーカイブから4つの新しいファイルと、次のステップで使用するリカバリビンができます。
 
 ### Install Brunch
 
