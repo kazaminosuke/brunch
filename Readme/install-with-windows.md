@@ -10,106 +10,106 @@
    <img src="../Images/terminal_icon-512.png" width="128px" alt="Logo"/>
   </a>
 </p>
-<h1 align="center">Install Brunch with Windows</h1>
+<h1 align="center">Windowsでブランチをインストールする</h1>
 
 <!-- Installation Guides -->
-# USB installations
-This guide is for installing Brunch to a USB (or other disk) using Windows. This guide is also required when singlebooting. To begin, boot into Windows and click the dropdown below to continue.
+# USBインストール
+このガイドはWindowsを使ってUSB（または他のディスク）にBrunchをインストールするためのものです。 シングルブートする場合もこのガイドが必要です。 まずWindowsを起動し、下のドロップダウンをクリックしてください。
 
 <details>
-  <summary>Click to open Brunch USB guide</summary>
+  <summary>クリックしてブランチUSBガイドを開く</summary>
 
-### Requirements
-- Administrator access.
-- Target Disk/USB must be 16 GB minimum.
-  - You will also need about 16 GB of free space in your Windows installation.
-- A linux installation via WSL2
-- `pv`, `tar`, `unzip` and `cgpt` packages.
-- A [compatible PC][compatibility] to boot Brunch on.
-- An entry level understanding of the linux terminal.
-  - This guide aims to make this process as easy as possible, but knowing the basics is expected.
+### 必要条件
+- 管理者アクセス。
+- ターゲットディスク/USBは16GB以上であること。
+  - また、Windowsのインストールに約16GBの空き容量が必要です。
+- WSL2によるLinuxのインストール
+- `pv`, `tar`, `unzip` および `cgpt` パッケージである.
+- ブランチを起動するための[互換PC][互換性]。
+- Linuxターミナルを初級レベルで理解していること。
+  - このガイドは、このプロセスをできるだけ簡単にすることを目的としているが、基本を知っておくことは期待されている。
 
-### Recoveries
-1. Download a recovery suitable for your CPU. The list below can help you select one. You do *not* need to select a recovery that matches the latest Brunch release number, the most recent avaliable is typically fine.
+### リカバリー
+1. お使いのCPUに適したリカバリーをダウンロードしてください。 以下のリストを参考にしてください。 最新のBrunchリリース番号と一致するリカバリーを選択する必要はありません。
   
 #### Intel
-* 8th gen & 9th gen: "[shyvana][recovery-shyvana]" for Intel / "[bobba][recovery-bobba]" for Celeron.
-* 10th gen: "[jinlon][recovery-jinlon]".
-* 11th gen & above: "[voxel][recovery-voxel]".
+* 第8世代と第9世代： Intelの場合は"[shyvana][recovery-shyvana]"、Celeronの場合は"[bobba][recovery-bobba]"
+* 第10世代: "[jinlon][recovery-jinlon]".
+* 第11世代以上: "[voxel][recovery-voxel]".
 #### AMD
 * Ryzen: "[gumboz][recovery-gumboz]".
 
-Recoveries can be found by clicking the above links. They can also be found by going to [cros.tech][cros-tech] and searching for the recovery you want.
+リカバリーは上記のリンクをクリックしてご覧ください。 また、[cros.tech][cros-tech]にアクセスし、ご希望のリカバリーを検索することでも見つけることができます。
 
-After selecting the recovery you want, you can select a specific release. Posted releases may be behind the current release, this is normal and you can update into the current release later. It is usually suggested to use the latest release avaliable.
+ご希望のリカバリーを選択した後、特定のリリースを選択することができます。 投稿されたリリースは現在のリリースより遅れている場合がありますが、これは通常のことで、後で現在のリリースにアップデートすることができます。 通常、利用可能な最新リリースを使用することをお勧めします。
 
-### Gathering Files
-2. Download the Brunch files from this GitHub repository. Do not use files found on other sites or linked in videos online. The [releases tab][releases-tab] can be found at the bottom of the right-hand column on the main GitHub page, but it is generally suggested to use the [latest release][latest-release].
+### ファイルの収集
+2. ブランチのファイルはGitHubリポジトリからダウンロードしてください。他のサイトにあるファイルやオンラインビデオにリンクされているファイルは使用しないでください。 [releases tab][releases-tab]はGitHubのメインページの右側の列の一番下にありますが、一般的には [latest release][latest-release]を使うことが推奨されています。
 
-When downloading a release, select the brunch...tar.gz file from the assets at the bottom of the release post. You do not need the source code files, do not download them.
+リリースをダウンロードする際は、リリース記事の下にあるアセットからbrunch...tar.gzファイルを選択してください。 ソースコードファイルは必要ありませんので、ダウンロードしないでください。
 
-Before continuing, you will need a linux distro installed from the Microsoft Store using WSL2, and the distro must be set up and ready to use. Please refer to online resources for this as the setup can be complicated for some systems.
+続行する前に、WSL2を使ってマイクロソフトストアからLinuxディストロをインストールし、ディストロをセットアップして使用できる状態にしておく必要があります。 システムによってはセットアップが複雑な場合があるので、オンラインリソースを参照してください。
 
-### Prepare the Terminal
-3. Once both files have been downloaded, the Brunch release and your chosen ChromeOS recovery, Launch WSL2.
-4. Make sure that pv, cgpt, tar and unzip are installed.
+### ターミナルの準備
+3. Brunchリリースと選択したChromeOSリカバリーの両方のファイルをダウンロードしたら、WSL2を起動します。
+4. pv、cgpt、tar、unzipがインストールされていることを確認する。
 
 ```sudo apt update && sudo apt -y install pv cgpt tar unzip```
-  * My example uses `apt`, a package manager for Debian and Ubuntu based distros. If you use Arch, you will need [vboot-utils][vboot-utils] for access to cgpt and a different package manager may be needed to install the rest.
+  * 私の例では、DebianとUbuntuベースのディストロ用のパッケージマネージャーである`apt`を使用している。 Arch を使っている場合は、cgpt にアクセスするために [vboot-utils][vboot-utils] が必要で、それ以外をインストールするには別のパッケージマネージャーが必要になるかもしれません。
 
-4b. Some Linux releases may require the `universe` repo to install some of the above dependencies. If you get any errors about a dependency being unavaliable, add the `universe` repo with this command, and then try the previous step again afterwards.
+4b. Linux のリリースによっては、上記の依存関係をインストールするために `universe` リポジトリが必要になる場合があります。 もし、依存関係が利用できないというエラーが表示された場合は、このコマンドで `universe` レポジトリを追加し、その後でもう一度前のステップを試してください。
 
 ```sudo add-apt-repository universe```
   
-5. After all dependencies have been installed, `cd` into the directory where your files were downloaded.
-  * Replace `username` with your *Windows* username.
-  * The linux terminal is Case Sensitive, be mindful of capital letters.
+5. すべての依存関係がインストールされたら、ファイルをダウンロードしたディレクトリに `cd` してください。
+  * username`をあなたの*Windows*ユーザー名に置き換えてください。
+  * linuxのターミナルは大文字と小文字を区別します。
 
 ```cd /mnt/c/Users/username/Downloads```
   
-6. Extract the Brunch archive using `tar`
-  * Replace `brunch_filename.tar.gz` with the file's actual filename.
+6. tar`を使ってBrunchアーカイブを取り出す。
+  * `brunch_filename.tar.gz` を実際のファイル名に置き換えてください。
 
 ```tar zxvf brunch_filename.tar.gz```
   
-7. Extract the ChromeOS recovery using `unzip`
-  * Replace `chromeos_filename.bin.zip` with the file's actual filename.
+7. `unzip`を使用してChromeOSリカバリを解凍する。
+  * chromeos_filename.bin.zip`を実際のファイル名に置き換える。
 
 ```unzip chromeos_filename.bin.zip```
 
-Once completed, you will have 4 new files from the brunch archive, and a recovery bin that we will use in the next step.
+完了すると、ブランチアーカイブから4つの新しいファイルと、次のステップで使用するリカバリビンができます。
 
-### Install Brunch
+### ブランチ
 
-8. Once you've got your files ready, you're ready to install Brunch.
-  * As before, replace `chromeos_filename.bin` with the bin file's actual filename.
+8. ファイルの準備ができたら、Brunchのインストールは完了です。
+  * 前と同じように、`chromeos_filename.bin`をbinファイルの実際のファイル名に置き換える。
 
 ```sudo bash chromeos-install.sh -src chromeos_filename.bin -dst chromeos.img```
 
-The script will ask for confirmation. If you're ready to install, type `yes` into the prompt.
+スクリプトが確認を求めてくる。 インストールの準備ができたら、プロンプトに `yes` と入力してください。
 
-The installation may take some time depending on the speed of your disk, please be patient. There may be a couple of GPT Header errors, which can be safely ignored. 
+ディスクの速度によってはインストールに時間がかかるかもしれません。 GPTヘッダーのエラーがいくつか出るかもしれませんが、無視してください。
 
-The installation will report that ChromeOS was installed when it is finished. Before closing the terminal, make sure that there are no additional errors in the terminal. If there are no errors, then you are good to go!
+インストールが終了すると、ChromeOSがインストールされたことが報告されます。 ターミナルを閉じる前に、追加のエラーがないことを確認してください。 エラーがなければ、問題ありません！
 
-### Making the USB
+### USBを作る
 
-9. Since WSL2 does not have direct disk access, we make an img with WSL2 and then use another program such as [Rufus][rufus-link] or [Etcher][etcher-link] to write the disk to a USB. Open the program of your choice, select the chromeos.img in your Downloads folder and write it to your USB.
+9. WSL2は直接ディスクにアクセスできないので、WSL2でimgを作成し、[Rufus][rufus-link]や[Etcher][etcher-link]などの別のプログラムを使ってディスクをUSBに書き込みます。お好みのプログラムを開き、ダウンロードフォルダ内のchromeos.imgを選択し、USBに書き込みます。
 
-### Next Steps
+### 次のステップ
   
-If you installed to a USB or a second internal disk, then you should be ready to boot into Brunch. If you've installed to a USB, keep it plugged in and reboot. It is normal for the first boot to take a very long time, please be patient.
+USBまたは2台目の内蔵ディスクにインストールした場合は、Brunchを起動する準備ができているはずです。 USBにインストールした場合は、接続したまま再起動してください。 最初の起動に時間がかかるのは普通です。
 
-* The first boot is the best time to setup anything important such as [changing kernels][changing-kernels] or [framework options][framework-options] by selecting the "ChromeOS (Settings)" boot option.
-* If you have any issues, it is strongly advised to check out the [Brunch Configuration Menu][edit-brunch-config] for possible patches or solutions.
-* At this point, your device may incorrectly state that your installation is only 14 GB, regardless of it's actual size. This can be fixed by opening a developer shell on the startup screen with **Ctrl + Alt + F2**.
-  * Log in as `root` there should be no password.
-  * Enter `resize-data` then reboot the PC when it's finished. Your reported size should now be accurate.
+* 最初の起動は、[changing kernels][change-kernels]や[framework options][framework-options]のような重要なものをセットアップするのに最適なタイミングである。
+* もし何か問題があれば、[Brunch Configuration Menu][edit-brunch-config] でパッチや解決策を確認することを強くお勧めします。
+* この時点で、お使いのデバイスは、実際のサイズに関係なく、インストールが14GBしかないと誤って表示する可能性があります。これは、**Ctrl + Alt + F2**を使用して起動画面で開発者シェルを開くことで修正できます。
+  * `root`としてログインしてください。パスワードはないはずです。
+  * `resize-data`と入力し、終了したらPCを再起動する。 これで報告されたサイズが正確になるはずです。
 
-## Secure Boot
+## セキュアブート
   
-10. If secure boot is enabled, a blue screen saying `Verification failed: (15) Access Denied` may appear upon boot. 
-  * To enroll the key directly from a USB, select OK -> Enroll key from disk -> EFI-SYSTEM -> brunch.der -> Continue and reboot.
+10. セキュアブートが有効になっている場合、起動時に「検証に失敗しました： (15) アクセス拒否」というブルースクリーンが表示されることがある。
+  * USBから直接キーを登録するには、「OK」→「Enroll key from disk」→「EFI-SYSTEM」→「brunch.der」→「Continue」を選択し、再起動します。
 
   </details>
   
