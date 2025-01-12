@@ -194,17 +194,17 @@ It is normal for the first boot to take a very long time, please be patient.
 1. お使いのCPUに適したリカバリーをダウンロードします。 以下のリストを参考にしてください。 最新のBrunchリリース番号と一致するリカバリーを選択する必要はありません。
   
 #### Intel
-* 第8世代と第9世代： Intel 用 "[shyvana][recovery-shyvana]」／Celeron 用 "[bobba][recovery-bobba]".
-* 第 10 世代： 第 10 世代: "[jinlon][recovery-jinlon]」.
+* 第8世代と第9世代： Intel 用 "[shyvana][recovery-shyvana]"／Celeron 用 "[bobba][recovery-bobba]".
+* 第 10 世代： 第 10 世代: "[jinlon][recovery-jinlon]".
 * 第11世代以上： "[voxel][recovery-voxel]".
 #### AMD
 * Ryzen: "[gumboz][recovery-gumboz]".
 
-Recoveries can be found by clicking the above links. They can also be found by going to [cros.tech][cros-tech] and searching for the recovery you want.
+リカバリーは上記のリンクをクリックすることで見つけることができます。 また、[cros.tech][cros-tech]にアクセスし、ご希望のリカバリーを検索することでも見つけることができます。
 
-After selecting the recovery you want, you can select a specific release. Posted releases may be behind the current release, this is normal and you can update into the current release later. It is usually suggested to use the latest release avaliable.
+ご希望のリカバリーを選択した後、特定のリリースを選択することができます。 投稿されたリリースは現在のリリースより遅れているかもしれませんが、これは通常のことで、後で現在のリリースにアップデートすることができます。 通常、利用可能な最新のリリースを使用することをお勧めします。
 
-### Gathering Files
+### ファイルの収集
 2. Download the Brunch files from this GitHub repository. Do not use files found on other sites or linked in videos online. The [releases tab][releases-tab] can be found at the bottom of the right-hand column on the main GitHub page, but it is generally suggested to use the [latest release][latest-release].
 
 When downloading a release, select the brunch...tar.gz file from the assets at the bottom of the release post. You do not need the source code files, do not download them.
