@@ -115,13 +115,13 @@ USBまたは2台目の内蔵ディスクにインストールした場合は、B
   
 ***
  
-# Singleboot installations
-This guide is for installing Brunch to a disk using a Brunch USB. This guide requires having a working Brunch USB to initiate the install, you can make one by following the [guide above][brunch-usb-guide-win]. To begin, boot into a working Brunch USB and click the dropdown below to continue.
+# シングルブートインストール
+このガイドはBrunch USBを使ってBrunchをディスクにインストールするためのものです。このガイドではインストールを開始するためにBrunch USBが必要です。まず、Brunch USBを起動し、下のドロップダウンをクリックしてください。
 
 <details>
-  <summary>Click to open singleboot guide</summary>
+  <summary>クリックしてシングルブートガイドを開く</summary>
 
-### Requirements
+### 必要条件
 - Administrator access.
 - Target Disk must be 16 GB minimum.
 - Working Brunch USB.
