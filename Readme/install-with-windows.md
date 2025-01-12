@@ -152,7 +152,7 @@ USBまたは2台目の内蔵ディスクにインストールした場合は、B
   
   ***
   
-### 
+### ブランチのインストール
   
 3. ターゲットディスクが決まったら、Brunchのインストールは完了です。
   * `disk`をターゲットディスクに置き換えてください。 (例えば `sdb`、`mmcblk0`、`nvme0n1` など）。
@@ -240,14 +240,14 @@ It is normal for the first boot to take a very long time, please be patient.
 
 完了すると、ブランチアーカイブから4つの新しいファイルと、次のステップで使用するリカバリビンができます。
 
-### Install Brunch
+### ブランチのインストール
 
-8. Once you've got your files ready, you're ready to install Brunch.
-  * As before, replace `chromeos_filename.bin` with the bin file's actual filename.
-  * You will also replace `size` with a whole number. (Such as `14`, `20`, or `100` for example)
-    * The number must be a *minimum* of 14, but *less* than the avaliable space on your partition in GB.
+8. ファイルの準備ができたら、Brunchのインストールは完了です。
+  * 先ほどと同じように、`chromeos_filename.bin`をbinファイルの実際のファイル名に置き換えてください。
+  * また、`size` を整数で置き換える。 (例えば `14`、`20`、`100` など）。
+    * また、`14`、`20`、`100` などの整数で置き換えることになります。
 
-Make a directory to install Brunch, for example:  
+例えばBrunchをインストールするディレクトリを作る：
   - run `mkdir /mnt/c/Users/username/brunch` if you want to install brunch in your home folder on C: partition.
   - or `mkdir /mnt/d/brunch` if you want to install brunch in the D: partition.
 
